@@ -14,18 +14,19 @@ const hideInputError = (formElement, inputElement, settings) => {
   errorElement.textContent = "";
 };
 
-// const checkInputValidity = (formElement, inputElement, settings) => {
-//   if (!inputElement.validity.valid) {
-//     showInputError(
-//       formElement,
-//       inputElement,
-//       inputElement.validationMessage,
-//       settings,
-//     );
-//   } else {
-//     hideInputError(formElement, inputElement, settings);
-//   }
-// };
+// copy checkInput Validity to FormValidator
+const checkInputValidity = (formElement, inputElement, settings) => {
+  if (!inputElement.validity.valid) {
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      settings
+    );
+  } else {
+    hideInputError(formElement, inputElement, settings);
+  }
+};
 
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {

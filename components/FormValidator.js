@@ -9,7 +9,7 @@ class FormValidator {
     this._formEl = formEL;
   }
 
-  // To Do -
+  // To Do - validate
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       showInputError(
@@ -25,19 +25,20 @@ class FormValidator {
 
   _setEventListeners() {
     this._inputList = Array.from(
-      this._formEl.querySelectorAll(this._inputSelectornputSelector)
-    );
-    // finish event listeners
-    const buttonElement = formElement.querySelector(
-      settings._submitButtonSelector
+      this._formEl.querySelectorAll(this._inputSelector)
     );
 
-    toggleButtonState(inputList, buttonElement);
+    // finish event listeners
+    // this._submitButtonSelector = this.formEl.querySelector(
+    //   settings._submitButtonSelector
+    // );
+
+    // this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        // toggleButtonState(inputList, buttonElement, settings);
+        this._toggleButtonState();
       });
     });
   }
