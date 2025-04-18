@@ -9,7 +9,45 @@ class FormValidator {
     this._formEl = formEL;
   }
 
-  enableValidation() {}
+  // To Do -
+  _checkInputValidity(inputElement) {
+    if (!inputElement.validity.valid) {
+      showInputError(
+        formElement,
+        inputElement,
+        inputElement.validationMessage,
+        settings
+      );
+    } else {
+      hideInputError(formElement, inputElement, settings);
+    }
+  }
+
+  _setEventListeners() {
+    this._inputList = Array.from(
+      this._formEl.querySelectorAll(this._inputSelectornputSelector)
+    );
+    // finish event listeners
+    const buttonElement = formElement.querySelector(
+      settings._submitButtonSelector
+    );
+
+    toggleButtonState(inputList, buttonElement);
+
+    this._inputList.forEach((inputElement) => {
+      inputElement.addEventListener("input", () => {
+        this._checkInputValidity(inputElement);
+        // toggleButtonState(inputList, buttonElement, settings);
+      });
+    });
+  }
+
+  enableValidation() {
+    this._formEl.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    this._setEventListeners(this._formEl);
+  }
 }
 
 export default FormValidator;
