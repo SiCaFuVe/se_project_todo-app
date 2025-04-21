@@ -10,9 +10,9 @@ class Todo {
     });
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
+      console.log(this._data.completed);
     });
   }
-  //when clicked, change copletion from true to false or vice versa
 
   _generateCheckboxEl() {
     this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
