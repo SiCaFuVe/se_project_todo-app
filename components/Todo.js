@@ -35,8 +35,6 @@ class Todo {
     this._todoDate.textContent = `Due: ${formatedDate}`;
   }
 
-  _generateName() {}
-
   getView() {
     this._todoElement = this._template.content
       .querySelector(".todo")
@@ -45,7 +43,6 @@ class Todo {
 
     this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
     todoNameEl.textContent = this._data.name;
-    
 
     this._formatDate(this._data.date);
     this._generateCheckboxEl();

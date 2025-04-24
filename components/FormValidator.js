@@ -73,11 +73,11 @@ class FormValidator {
     this._buttonElement.classList.add(this._inactiveButtonClass);
   };
 
-  _resetValidation = () => {
+  resetValidation = () => {
     this._inputList.forEach((input) => {
       this._hideInputError(input);
-      this._formEl.reset();
     });
+    this._formEl.reset();
   };
 
   enableValidation() {
