@@ -78,6 +78,7 @@ class FormValidator {
       this._hideInputError(input);
     });
     this._formEl.reset();
+    this._toggleButtonState();
   };
 
   enableValidation() {
