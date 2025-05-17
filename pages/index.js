@@ -15,16 +15,15 @@ const todosList = document.querySelector(".todos__list");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: () => {},
+  handleFormSubmit: (evt) => {
+    // To do= move code from  submnision to here
+  },
 });
 addTodoPopup.setEventListeners();
 
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
-
-// containerSelector: ".todos__list",
-// call renderItems Method
 
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template");
@@ -41,7 +40,6 @@ addTodoButton.addEventListener("click", () => {
 // });
 
 // addTodoForm.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
 //   const name = evt.target.name.value;
 //   const dateInput = evt.target.date.value;
 
