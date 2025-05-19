@@ -1,15 +1,20 @@
 class Todo {
-  constructor(data, selector) {
+  constructor(data, selector, handleCheck, handleDelete) {
     this._data = data;
     this._template = document.querySelector(selector);
+    this._handleCheck = handleCheck;
+    this._handleDelete = handleDelete;
   }
 
   _setEventListeners() {
     this._todoDeleteBtn.addEventListener("click", () => {
-      this._todoElement.remove();
+      this._handleDelete(this._completed);
+      this._remove();
     });
+
     this._todoCheckboxEl.addEventListener("change", () => {
-      this._data.completed = !this._data.completed;
+      this._toggleCompletion();
+      this._handleCheck(this._completed);
     });
   }
 
@@ -34,6 +39,15 @@ class Todo {
       : "Invalid Date";
     this._todoDate.textContent = `Due: ${formatedDate}`;
   }
+
+  _toggleCompletion = () => {
+    this._completed = !this._completed;
+  };
+
+  _remove = () => {
+    this._todoElement.remove();
+    this._todoElement = null;
+  };
 
   getView() {
     this._todoElement = this._template.content
