@@ -4,11 +4,13 @@ class Todo {
     this._template = document.querySelector(selector);
     this._handleCheck = handleCheck;
     this._handleDelete = handleDelete;
+    this._completed = data.completed;
   }
 
   _setEventListeners() {
     this._todoDeleteBtn.addEventListener("click", () => {
-      this._handleDelete(this._completed);
+      const isCompleted = this._todoCheckboxEl.checked;
+      this._handleDelete(isCompleted);
       this._remove();
     });
 
